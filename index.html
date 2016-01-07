@@ -4,49 +4,82 @@
 <head>
   <meta charset="utf-8">
   <title>Music History</title>
+  <link rel="stylesheet" href="styling.css">
 </head>
 
 <body>
 
 	<nav>
 		<ul>
-			<li>View Music</li>
-			<li>Add Music</li>
+			<li><a href="#">View music</a></li>
+			<li>|</li>
+			<li><a href="page2.html">Add music</a></li>
+			<li>|</li>
 			<li>Profile</li>
 		</ul>
 	</nav>
 
-<section>
 
-	<input id="slider1" type="range" min="0" max="500" step="100" />
-	
- Artist<select name="Artist">
-  <option value="Abba">Abba</option>
-  <option value="Tom Jones">Tom Jones</option>
-  <option value="Shirley Bassey">Shirley Bassey</option>
-  <option value="Elvis">Megadeath</option>
- </select>
+	<!--Sidebar -->
 
- Album<select name="Album">
-   <option value="Abba">Abba</option>
-   <option value="Tom Jones">Tom Jones</option>
-   <option value="Shirley Bassey">Shirley Bassey</option>
-   <option value="Elvis">Megadeath</option>
- </select>
+	<div id="sidebar">
 
- <button type="button">Rock</button>
- <button type="button">Classical</button>
- <button type="button">Pop</button>
- <button type="button">Jazz</button>
- <button type="button">Blues</button>
- <button type="button">HipHop</button>
+		<label for="slider1">Song Length</label>
+		<input id="slider1" type="range" min="0" max="500" step="100" />
 
-<button type="Function">Filter</button>
+		<div class="selectors">
+		    <label for="artist">Artist:</label>
+			<select id="artist" name="Artist">
+				<option value="Abba">Abba</option>
+			  	<option value="Tom Jones">Tom Jones</option>
+			  	<option value="Shirley Bassey">Shirley Bassey</option>
+			  	<option value="Elvis">Megadeath</option>
+			</select>
+		</div>
+		<div class="selectors">
+			<label for="album">Album:</label>
+			<select id="album" name="Album">
+				<option value="Abba">Abba</option>
+				<option value="Tom Jones">Tom Jones</option>
+				<option value="Shirley Bassey">Shirley Bassey</option>
+				<option value="Elvis">Megadeath</option>
+			</select>
+		</div>
+
+	 <form method='post'>
+	 	<fieldset class="radioButtons">
+	 		<legend>Genre:</legend>
+	 			<div class="checkboxButtons1">
+	 				<input type="checkbox" name="genre" value="Rock"/>Rock<br/>
+	 				<input type="checkbox" name="genre" value="Classical"/>Classical<br/>
+	 				<input type="checkbox" name="genre" value="Pop"/>Pop<br/>
+	 			</div>
+	 			<div class="checkboxButtons2">
+	 				<input type="checkbox" name="genre" value="Jazz"/>Jazz<br/>
+	 				<input type="checkbox" name="genre" value="Blues"/>Blues<br/>
+	 				<input type="checkbox" name="genre" value="Hip Hop"/>Hip Hop<br/>
+	 		    </div>
+		</fieldset>
+
+		<button id="filter" type="Function">Filter</button>
+
+	</div>	<!-- end sidebar -->
 
 
+	<!-- Main Content -->
 
+	<div id="main-content">
 
-</section>	
+		<h2>Song Name</h2>
+		<p>Artist Name | Album Name | Genre</p>
+		<h2>Song Name</h2>
+		<p>Artist Name | Album Name | Genre</p>
+		<h2>Song Name</h2>
+		<p>Artist Name | Album Name | Genre</p>
+		<h2>Song Name</h2>
+		<p>Artist Name | Album Name | Genre</p>
+		
+	</div> <!-- end main content -->
 
 </body>
 </html>
