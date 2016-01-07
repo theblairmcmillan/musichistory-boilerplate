@@ -16,13 +16,22 @@ nav {
     margin: 1em auto;
 }
 
-nav > ul > li {
+nav ul li {
 	font-family: Arial;
-    list-style-type: none;
-    font-family: "Arial";
-    cursor: pointer;
-    display: inline;
-    font-size: 15px;
+	display: inline;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 300
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+
+nav a:hover {
+	color: white;
 }
 
 /****************************
@@ -69,8 +78,13 @@ fieldset {
 }
 
 #filter {
-	width: 60px;
-	height: 20px;
+	width: 90px;
+	height: 25px;
+	border-radius: 6px;
+	border: 3px solid black;
+	padding: 2px;
+	margin: 10px 50px 10px 50px;
+	cursor: pointer;
 }
 
 
@@ -113,19 +127,71 @@ Page two
 *****************************/
 
 #formpage2 {
-	margin-left: 40%;
+	margin-left: 35%;
 	margin-top: 10%;
+	margin-right: 0;
 
 }
 
 .pagetwoform > input {
 	margin-bottom: 6px;
-	border: 2px solid black;
+	border: 3px solid black;
 }
+
+/**************************
+ADD BUTTON
+**************************/
 
 #addbutton {
 	display: block;
-	margin: 0 auto;
+	margin: 10px auto;
+	width: 80px;
+	height: 30px;
+	border: 2px solid black;
+	border-radius: 6px;
+	cursor: pointer;
 }
+
+/**************************
+END ADD BUTTON
+************************/
+
+.artistinput {
+	margin-left: 38px;
+	margin-top: 5px;
+
+}
+
+.albuminput {
+	margin-top: 5px;
+	margin-right: 60px;
+
+}
+
+.artistinput > input {
+	border: 2px solid black;
+	margin-left: 5px;
+}
+
+.albuminput > input {
+	border: 2px solid black;
+	margin-top: 0px;
+	margin-right: 45px;
+	padding-left: 0;
+}
+
+.inputtext {
+	float: left;
+	color: orange;
+	padding: 0;
+
+}
+
+.firstinput {
+	margin-left: 5px;
+	border: 2px solid black;
+	border-style: solid;
+}
+
 
 
