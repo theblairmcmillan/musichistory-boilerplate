@@ -176,18 +176,18 @@ END ADD BUTTON
 .albuminput > input {
 	border: 2px solid black;
 	margin-top: 0px;
-	margin-right: 45px;
+	margin-right: 48px;
 	padding-left: 0;
 }
 
 .inputtext {
 	float: left;
-	color: orange;
+	color: black;
 	padding: 0;
 
 }
 
-.firstinput {
+.firstinput input {
 	margin-left: 5px;
 	border: 2px solid black;
 	border-style: solid;
