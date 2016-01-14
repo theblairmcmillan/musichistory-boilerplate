@@ -1,0 +1,6 @@
+function printMyName () {
+	console.log("hi im steve");
+}
+
+printMyName
+console.log(printMyName());
