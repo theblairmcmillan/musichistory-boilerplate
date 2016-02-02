@@ -19,13 +19,6 @@ console.log("added", songs)
 songs.unshift("Lazarus > by David Bowie > Blackstar");
 console.log("at the beginning", songs)
 
-var songs = songs;
-console.log(songs.indexOf(">"));
-
-var songs;
-console.log("songs is", songs);
-
-var songs = songs
 var mainSection = document.getElementById("main-content");
 mainSection.innerHTML = songs;
 
@@ -50,7 +43,7 @@ mainSection.innerHTML = formattedSongs;
 // };
 
 
-/////// Selecting view JS ///////
+/////// SELECTING VIEWS ///////
 
 var homeLink = document.getElementById("view-music");
 var homeView = document.getElementById("listMusicView");
@@ -69,6 +62,24 @@ addLink.addEventListener("click", function() {
   userInputView.classList.remove("hidden");
 
 });
+
+//////////// GETTING USER INPUT FROM THE DOM ////////////
+
+document.getElementById('addButton').onclick = function() {
+	getInfo();
+}
+
+function getInfo() {
+	var songName = document.getElementById("inputSongName").value;
+	var artistName = document.getElementById("inputArtist").value;
+	var albumName = document.getElementById("inputAlbum").value;
+
+	var fullInput = "<p>" + songName + " - " + artistName + " - " + albumName + "</p>";
+	console.log(fullInput);
+	mainSection.innerHTML += fullInput;	
+};
+
+
 
 
 
