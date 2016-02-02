@@ -30,7 +30,7 @@ var mainSection = document.getElementById("main-content");
 mainSection.innerHTML = songs;
 
 for (var i = 0; i < songs.length; i++) {
- songs[i] = songs[i].replace(/>/g, "-").replace(/\(/g, "").replace(/@/g, "").replace(/\*/g, ""); 
+ songs[i] = songs[i].replace(/>/g, "-").replace(/\(/g, "").replace(/@/g, "").replace(/\*/g, "").replace(/!/,""); 
 };
 console.log("replaced", songs)
 
@@ -48,3 +48,34 @@ mainSection.innerHTML = formattedSongs;
 // 	song[i] =songs[i].replace(/\(/g, "")
 // 		console.log(songs, i);
 // };
+
+
+/////// Selecting view JS ///////
+
+var homeLink = document.getElementById("view-music");
+var homeView = document.getElementById("listMusicView");
+
+homeLink.addEventListener("click", function() {
+  userInputView.classList.add("hidden");
+  listMusicView.classList.remove("hidden")
+
+});
+
+var addLink = document.getElementById("add-music");
+var addView = document.getElementById("userInputView");
+
+addLink.addEventListener("click", function() {
+  listMusicView.classList.add("hidden");
+  userInputView.classList.remove("hidden");
+
+});
+
+
+
+
+
+
+
+
+
+

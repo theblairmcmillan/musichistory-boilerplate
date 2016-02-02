@@ -195,3 +195,20 @@ END ADD BUTTON
 
 
 
+/****************
+USER INPUT BUTTONS
+****************/
+
+.userInput {
+	display: block;
+}
+
+
+/**************************************
+HIDDEN / VISIBLE CLICK EVENT STYLING
+***************************************/
+
+.hidden {
+  display: none;
+}
+
