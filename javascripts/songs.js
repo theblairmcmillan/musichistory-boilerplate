@@ -6,6 +6,8 @@ $(document).ready(function() {
 	var addView = $("#userInputView");
 	var listView = $("#listView");
 	var listLink = $("#listBtn");
+	var loginView = $("#loginView");
+	var mainCont = $("main-outer-container");
 	//GLOBAL VARIABLE
 	var songsArray = [];
 
@@ -138,6 +140,74 @@ MORE BUTTON
 			});
 		};
 	});
+
+
+/****************************
+LOGIN VIEW
+****************************/
+
+$("#createSubmitBtn").click(function() {
+		var userEmail = $("#userEmail").val();
+		var userPassword = $("#userPassword").val();
+		console.log(userEmail);
+		console.log(userPassword);
+		// listView.removeClass("hidden");
+		// mainCont.removeClass("hidden");
+		// loginView.addClass("hidden");
+		var ref = new Firebase("https://blair-music-history.firebaseio.com/");
+		ref.createUser({
+		  email    : userEmail,
+		  password : userPassword,
+		}, function(error, userData) {
+		  if (error) {
+		    console.log("Error creating user:", error);
+		    alert("Please enter a valid email address");
+		  } else {
+		    console.log("Successfully created user account with uid:", userData.uid);
+		    listView.removeClass("hidden");
+		    mainCont.removeClass("hidden");
+		    loginView.addClass("hidden");
+		    navbar.removeClass("hidden");
+		  }
+		});
+});
+
+
+$("loginSubmitBtn").click(function(){
+		var userEmail = $("#userEmail").val();
+		var userPassword = $("#userPassword").val();
+		console.log(userEmail);
+		console.log(userPassword);
+
+		var ref = new Firebase("https://blair-music-history.firebaseio.com/");
+		ref.authWithPassword({
+		  email    : userEmail,
+		  password : userPassword,
+		}, function(error, authData) {
+		  if (error) {
+		    console.log("Login Failed!", error);
+		  } else {
+		    console.log("Authenticated successfully with payload:", authData);
+		     listView.removeClass("hidden");
+		    mainCont.removeClass("hidden");
+		    loginView.addClass("hidden");
+		    $("#navbar").removeClass("hidden");
+		  }
+		});
+});
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 }); //  END OF DOC.READY FUNCTION 

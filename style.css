@@ -134,3 +134,24 @@ MORE BUTTON
 	width: 100%;
 	text-align: center;
 }
+
+
+/****************
+Login
+*****************/
+
+#loginSubmitBtn {
+	margin: 4%;
+}
+
+#loginView {
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+
+
+
+
+

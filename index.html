@@ -11,7 +11,7 @@
 
     <!-- NAVBAR -->
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default hidden" id="navbar" >
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -37,10 +37,11 @@
 	
     <!-- MAIN BODY -->   
 
-    <!--SIDEBAR -->
+      <!--SIDEBAR -->
 
 
-    <div id="main-outer-container">
+
+    <div id="main-outer-container" class="">
       <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
           <div id="imgdiv">
@@ -48,7 +49,7 @@
           </div>
 
           <!-- DROP DOWN SELECTS -->
-          <div id="fullBtnContainer">
+          <div id="fullBtnContainer" class="hidden">
             <div id="dropdowns">
               <select class="select" id="artist-select" name="artist-select">
                 <option>SELECT ARTIST</option>
@@ -106,14 +107,39 @@
             </div>
           </div>  <!-- END OF USER INPUT -->
 
-          <div id="listView"></div>
-          <div id="moreBtnDiv"><button type="button" class="btn moreBtn">More</button></div>
+          <div id="listView" class="hidden"></div>
+          <!-- <div id="moreBtnDiv"><button type="button" class="btn moreBtn">More</button></div> -->
+
+
+          <!--LOGIN VIEW -->
+
+          <div id="loginView" class="">
+              <div class="input-group">
+                  <input id="userEmail" type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                  <input id="userPassword" type="text" class="form-control" placeholder="password" aria-describedby="basic-addon1">
+                  <div id="submitBtnDiv">
+                  <input id="loginSubmitBtn" class="btn btn-default" type="submit" value="Login">
+                  <input id="createSubmitBtn" class="btn btn-default" type="submit" value="Create Acount">
+                  </div>
+                </div>
+          </div>   
+
+
+
+
+
+
+
+
+
+
 
         </div>   <!--END OF SONG CONTAINER -->
       </div> <!-- END OF ROW -->
     </div>
 
-    
+
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="javascripts/songs.js"></script>	
   </body>
