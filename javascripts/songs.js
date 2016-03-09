@@ -26,6 +26,8 @@ $(document).ready(function() {
 	
 
 	function outputSongstoDOM(songs) {
+		console.log("got to outputSongstoDOM function");
+		console.log(songs);
 		var songsEl = $("#listView");
 	 	var songData = ""; // intial blank string to hold data
 		for (var i = 0; i < songs.length; i++) {
@@ -43,17 +45,26 @@ $(document).ready(function() {
 
 	//fUNCTION ON LOAD TO POPULATE DOM // 
 	function executeThisCodeAfterFileIsLoaded (data) {
-		// var data = JSON.parse(responsedata);
-		console.log(data);	
-		songsArray = data.songs;
+		// MAKE data object an array called songsArray
+			for(var i in data){
+	  		console.log(">>>>>", data[i]);
+	  		songsArray.push(data[i]);
+	  	};
 		outputSongstoDOM(songsArray);
 	};
 
 
-	// GETTING DATA FROM JSON // 
-	$.getJSON("library.json", function(data) {
-		executeThisCodeAfterFileIsLoaded(data);
-	});
+	// GETTING DATA FROM FIREBASE // 
+	
+	 $.ajax({
+	    url: "https://scorching-torch-2191.firebaseio.com/songs.json",
+	    method: "GET"
+	    // data: JSON.stringify(data)
+	  }).done(function(data) {
+	  	console.log("data from firebase!!::::", data);
+	    executeThisCodeAfterFileIsLoaded(data);
+	  });
+
 
 	//////////// GETTING USER INPUT FROM THE DOM ////////////
 	$("#userSongSubmitBtn").click(function() {
@@ -86,6 +97,17 @@ $(document).ready(function() {
 			console.log(event.target);
 			$(event.target).parentsUntil("#listView").remove();
 		} // end if
+	});
+
+	/************************
+	Submit filter button
+	*************************/
+	$("#submitBtn").click(function(event){
+		console.log("clickedBtn");
+		console.log("artist=", $("#artist-select").val());
+		console.log("album=", $("#album-select").val());
+
+
 	});
 
 
