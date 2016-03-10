@@ -8,6 +8,8 @@ $(document).ready(function() {
 	var listLink = $("#listBtn");
 	var loginView = $("#loginView");
 	var mainCont = $("main-outer-container");
+	var navBar = $("#navBar");
+	var btn = $("#fullBtnContainer");
 	//GLOBAL VARIABLE
 	var songsArray = [];
 
@@ -146,55 +148,60 @@ MORE BUTTON
 LOGIN VIEW
 ****************************/
 
-$("#createSubmitBtn").click(function() {
-		var userEmail = $("#userEmail").val();
-		var userPassword = $("#userPassword").val();
-		console.log(userEmail);
-		console.log(userPassword);
-		// listView.removeClass("hidden");
-		// mainCont.removeClass("hidden");
-		// loginView.addClass("hidden");
-		var ref = new Firebase("https://blair-music-history.firebaseio.com/");
-		ref.createUser({
-		  email    : userEmail,
-		  password : userPassword,
-		}, function(error, userData) {
-		  if (error) {
-		    console.log("Error creating user:", error);
-		    alert("Please enter a valid email address");
-		  } else {
-		    console.log("Successfully created user account with uid:", userData.uid);
-		    listView.removeClass("hidden");
-		    mainCont.removeClass("hidden");
-		    loginView.addClass("hidden");
-		    navbar.removeClass("hidden");
-		  }
-		});
-});
+	$("#createSubmitBtn").click(function() {
+			var userEmail = $("#userEmail").val();
+			var userPassword = $("#userPassword").val();
+			console.log(userEmail);
+			console.log(userPassword);
+			// listView.removeClass("hidden");
+			// mainCont.removeClass("hidden");
+			// loginView.addClass("hidden");
+			var ref = new Firebase("https://blair-music-history.firebaseio.com/");
+			ref.createUser({
+			  email    : userEmail,
+			  password : userPassword,
+			}, function(error, userData) {
+			  if (error) {
+			    console.log("Error creating user:", error);
+			    alert("Please enter a valid email address");
+			  } else {
+			    console.log("Successfully created user account with uid:", userData.uid);
+			    listView.removeClass("hidden");
+			    mainCont.removeClass("hidden");
+			    loginView.addClass("hidden");
+			    navBar.removeClass("hidden");
+			    btn.removeClass("hidden");
+			  }
+			});
+	});
 
 
-$("loginSubmitBtn").click(function(){
-		var userEmail = $("#userEmail").val();
-		var userPassword = $("#userPassword").val();
-		console.log(userEmail);
-		console.log(userPassword);
+	$("#loginSubmitBtn").click(function(){
+			var userEmail = $("#userEmail").val();
+			var userPassword = $("#userPassword").val();
+			console.log(userEmail);
+			console.log(userPassword);
+			console.log("clickedlogin");
 
-		var ref = new Firebase("https://blair-music-history.firebaseio.com/");
-		ref.authWithPassword({
-		  email    : userEmail,
-		  password : userPassword,
-		}, function(error, authData) {
-		  if (error) {
-		    console.log("Login Failed!", error);
-		  } else {
-		    console.log("Authenticated successfully with payload:", authData);
-		     listView.removeClass("hidden");
-		    mainCont.removeClass("hidden");
-		    loginView.addClass("hidden");
-		    $("#navbar").removeClass("hidden");
-		  }
-		});
-});
+			var ref = new Firebase("https://blair-music-history.firebaseio.com/");
+			ref.authWithPassword({
+			  email    : userEmail,
+			  password : userPassword,
+			}, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+			    alert("please create an account to login");
+			  } else {
+			    console.log("Authenticated successfully with payload:", authData);
+			     listView.removeClass("hidden");
+			    mainCont.removeClass("hidden");
+			    loginView.addClass("hidden");
+			    navBar.removeClass("hidden");
+			    btn.removeClass("hidden");
+
+			  }
+			});
+	});
 
     
 
