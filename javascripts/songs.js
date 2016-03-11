@@ -91,6 +91,10 @@ $(document).ready(function() {
 		};
 		// add song object to database
 		songsRef.push(songObject);
+		$("#songInput").val("");
+		$("#artistInput").val("");
+		$("#albumInput").val("");
+		
 	});
 
 	/********************
