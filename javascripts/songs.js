@@ -10,6 +10,7 @@ $(document).ready(function() {
 	var mainCont = $("main-outer-container");
 	var navBar = $("#navBar");
 	var btn = $("#fullBtnContainer");
+	var logout = $("#logout");
 	//GLOBAL VARIABLE
 	
 
@@ -154,7 +155,7 @@ MORE BUTTON
 /****************************
 LOGIN VIEW
 ****************************/
-
+	var ref = new Firebase("https://blair-music-history.firebaseio.com/");
 	$("#createSubmitBtn").click(function() {
 			var userEmail = $("#userEmail").val();
 			var userPassword = $("#userPassword").val();
@@ -163,7 +164,7 @@ LOGIN VIEW
 			// listView.removeClass("hidden");
 			// mainCont.removeClass("hidden");
 			// loginView.addClass("hidden");
-			var ref = new Firebase("https://blair-music-history.firebaseio.com/");
+			
 			ref.createUser({
 			  email    : userEmail,
 			  password : userPassword,
@@ -209,6 +210,31 @@ LOGIN VIEW
 			  }
 			});
 	});
+
+
+////////////////////logout button ////////
+
+	logout.click(function(){
+		console.log("clickkkked");
+		ref.unauth();
+		listView.addClass("hidden");
+		mainCont.addClass("hidden");
+		loginView.removeClass("hidden");
+		navBar.addClass("hidden");
+		btn.addClass("hidden");
+	});
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
