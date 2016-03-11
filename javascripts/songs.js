@@ -11,7 +11,17 @@ $(document).ready(function() {
 	var navBar = $("#navBar");
 	var btn = $("#fullBtnContainer");
 	//GLOBAL VARIABLE
-	var songsArray = [];
+	
+
+	var songsRef = new Firebase("https://blair-music-history.firebaseio.com/songs");
+
+	songsRef.on("value", function(snapshot) {
+	  console.log(snapshot.val());
+	  executeThisCodeAfterFileIsLoaded(snapshot.val());
+	}, function (errorObject) {
+	  console.log("The read failed: " + errorObject.code);
+	});
+
 
 
 	addLink.click("click", function () {
@@ -39,7 +49,7 @@ $(document).ready(function() {
 			songData += `<div class="col-sm-4 col-md-4"><h3>${songs[i].artist}</h3></div>`;
 			songData += `<div class="col-sm-3 col-md-3"><h5>${songs[i].title}</h5></div>`;
 			songData += `<div class="col-sm-3 col-md-3"><h5>${songs[i].album}</h5></div>`;
-			songData += `<div class="col-sm-2 col-md-2"><button type="button" class="btn btn-danger deleteBtn">Delete</button></div>`;
+			songData += `<div class="col-sm-2 col-md-2"><button type="button" id=${songs[i].key} class="btn btn-danger deleteBtn">Delete</button></div>`;
 			songData += `</div>`;
 		};
 		// songData += `<div class="row" id="moreBtnDiv"><button type="button" class="btn moreBtn">More</button></div>`;
@@ -49,25 +59,21 @@ $(document).ready(function() {
 
 	//fUNCTION ON LOAD TO POPULATE DOM // 
 	function executeThisCodeAfterFileIsLoaded (data) {
+		var songsArray = [];
+
 		// MAKE data object an array called songsArray
-			for(var i in data){
+		for (var i in data) {
+			// add the object's unique firebase key into the object
+			data[i].key = i;
 	  		console.log(">>>>>", data[i]);
 	  		songsArray.push(data[i]);
 	  	};
+	  	console.log("ALL THE STUFF WITH KEYS:::::", songsArray);
 		outputSongstoDOM(songsArray);
 	};
 
 
-	// GETTING DATA FROM FIREBASE // 
-	
-	 $.ajax({
-	    url: "https://scorching-torch-2191.firebaseio.com/songs.json",
-	    method: "GET"
-	    // data: JSON.stringify(data)
-	  }).done(function(data) {
-	  	console.log("data from firebase!!::::", data);
-	    executeThisCodeAfterFileIsLoaded(data);
-	  });
+
 
 
 	//////////// GETTING USER INPUT FROM THE DOM ////////////
@@ -77,17 +83,14 @@ $(document).ready(function() {
 		var albumName = $("#albumInput").val();
 		listView.removeClass("hidden");
 		addView.addClass("hidden");
+		// create object for database
 		var songObject = {
 			title: songName,
 			artist: artistName,
 			album: albumName
 		};
-		songsArray.push(songObject);
-		outputSongstoDOM(songsArray);
-		$("#songInput").val("");
-		$("#artistInput").val("");
-		$("#albumInput").val("");
-
+		// add song object to database
+		songsRef.push(songObject);
 	});
 
 	/********************
@@ -97,11 +100,11 @@ $(document).ready(function() {
 	$("#listView").click(function(event){
 		console.log("clicked");
 		if ($(event.target).hasClass("deleteBtn")) {
-			console.log("has a class");
-			console.log(event.target);
-			$(event.target).parentsUntil("#listView").remove();
+			var deleteRef = new Firebase("https://blair-music-history.firebaseio.com/songs/" + event.target.id);
+			deleteRef.remove();
 		} // end if
 	});
+
 
 	/************************
 	Submit filter button
@@ -204,16 +207,6 @@ LOGIN VIEW
 	});
 
     
-
-
-
-
-
-
-
-
-
-
 
 
 
